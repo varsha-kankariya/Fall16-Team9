@@ -24,8 +24,8 @@ c. As a user, I want to keep track of the items I have purchased, so that I can 
 
 Personas:
 
-Home-maker
-Working professionals
+a. Home-maker
+b. Working professionals
 
 
 2. Curb Inspector 
@@ -45,8 +45,8 @@ b. As the mayor of the city, I want to reduce the manpower allocated for monitor
 
 Personas:
 
-Police Officer
-Mayor
+a. Police Officer
+b. Mayor
 
 
 

@@ -1,7 +1,7 @@
 # Fall16-Team9
 
 
-1. Eat OR Share
+I. Eat OR Share
 
 Problem:
 
@@ -18,17 +18,17 @@ Suppose our app notifies a family that tomatoes would be perished in next 2 days
 
 User Stories:
 
-a. As a user, I want to keep track of the items I have purchased, so that I can avoid food wastage.
-b. As a user, I want to keep track of the expiration dates of the products I have, so that I can utilize the products in time or donate them to avoid wastage.
-c. As a user, I want to keep track of the items I have purchased, so that I can keep track of the items that I have, plan my shopping accordingly and save money.
+1.As a user, I want to keep track of the items I have purchased, so that I can avoid food wastage.
+2.As a user, I want to keep track of the expiration dates of the products I have, so that I can utilize the products in time or donate them to avoid wastage.
+3.As a user, I want to keep track of the items I have purchased, so that I can keep track of the items that I have, plan my shopping accordingly and save money.
 
 Personas:
 
-a. Home-maker
-b. Working professionals
+1.Home-maker
+2.Working professionals
 
 
-2. Curb Inspector 
+II. Curb Inspector 
 
 Problem :
 
@@ -40,13 +40,13 @@ To solve this issue, we propose a system that will automate most of this process
 
 User Stories:
 
-a. As a policer officer, I want to track the vehicles that exceed the time allotted so that I can carry out further process without monitoring the vehicles continuously
-b. As the mayor of the city, I want to reduce the manpower allocated for monitoring vehicles so that I can reduce the cost and reutilize the manpower in making the city secure.
+1.As a policer officer, I want to track the vehicles that exceed the time allotted so that I can carry out further process without monitoring the vehicles continuously
+2.As the mayor of the city, I want to reduce the manpower allocated for monitoring vehicles so that I can reduce the cost and reutilize the manpower in making the city secure.
 
 Personas:
 
-a. Police Officer
-b. Mayor
+1.Police Officer
+2.Mayor
 
 
 

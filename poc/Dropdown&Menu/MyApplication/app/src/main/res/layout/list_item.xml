@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <!-- Text View for List Item-->
+    <TextView
+        android:id="@+id/lblListItem"
+
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:textSize="17dip"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+    <ImageView
+
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus_add_green"/>
+
+    <EditText
+
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        />
+
+    <ImageView
+
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/minus_remove_green"/>
+
+
+
+</LinearLayout>

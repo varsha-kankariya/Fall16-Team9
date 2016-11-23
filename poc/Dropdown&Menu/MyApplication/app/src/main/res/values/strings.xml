@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string-array name="fruits_array">
+        <item>Fruits</item>
+        <item>Apple</item>
+        <item>Mango</item>
+        <item>Peach</item>
+        <item>Grapes</item>
+        <item>Strawberry</item>
+        <item>Cherries</item>
+    </string-array>
+</resources>

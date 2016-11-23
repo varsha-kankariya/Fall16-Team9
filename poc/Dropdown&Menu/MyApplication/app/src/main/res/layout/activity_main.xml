@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="com.example.myapplication.MainActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<!-- List view for drop down lists-->
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+
+    </LinearLayout>
+
+<!-- Layout for action bar-->
+    <LinearLayout
+        android:id="@+id/show_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/primary_material_light"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <!--Icon/button for fridge -->
+        <ImageButton
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fridge"/>
+
+        <!--Icon/button for shopping cart -->
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shopping_cart" />
+
+
+    </LinearLayout>
+</RelativeLayout>

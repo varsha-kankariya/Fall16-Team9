@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,11 +19,19 @@ import java.util.Map;
 public class ListDataAdapter extends ArrayAdapter {
 
     DBHandler db;
-    HashMap<Integer, Item> mlist;
+    private HashMap<Integer, Item> mlist;
 
     public ListDataAdapter(Context context, int resource, HashMap<Integer, Item> list) {
         super(context, resource);
         mlist = list;
+    }
+
+    public HashMap<Integer, Item> getMlist() {
+        return mlist;
+    }
+
+    public void setMlist(HashMap<Integer, Item> mlist) {
+        this.mlist = mlist;
     }
 
     @Override

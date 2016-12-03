@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -38,6 +38,23 @@ public class Inventory extends Fragment {
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         displayList();
         //mListDataAdapter.notifyDataSetChanged();
+        Button button = (Button) mview.findViewById(R.id.updateInvButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<Integer, Item> inventoryList =  mListDataAdapter.getMlist();
+                int position = 0;
+
+                for (Map.Entry<Integer, Item> entry : inventoryList.entrySet()) {
+                    Item item = entry.getValue();
+                    int id = item.getId();
+                    int quantity = item.getQuantity();
+                    dateBaseHelper.updateData(id, quantity);
+                    position++;
+                    System.out.println(id + "id is updated with quantity" +quantity);
+                }
+            }
+        });
         return mview;
     }
 
@@ -57,8 +74,8 @@ public class Inventory extends Fragment {
                 String weight;
                 itemId = cursor.getInt(0);
                 item_name = cursor.getString(1);
-                quantity = cursor.getInt(2);
-                weight = cursor.getString(3);
+                quantity = cursor.getInt(3);
+                weight = cursor.getString(4);
                 expDate = dateBaseHelper.getExpDay();
                 Item dataProvider = new Item(itemId, item_name, expDate, quantity ,weight);
                 itemsList.put(position,dataProvider);

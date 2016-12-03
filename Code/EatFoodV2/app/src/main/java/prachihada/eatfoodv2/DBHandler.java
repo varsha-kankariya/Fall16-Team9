@@ -78,7 +78,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public String getExpDay(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("Select Cast(( JulianDay(Expiry_Date)-JulianDay()) As Integer) FROM " + TABLE_Items, null);
+        Cursor res = db.rawQuery("Select Cast(( JulianDay(Expiry_Date)-(JulianDay()-1)) As Integer) FROM " + TABLE_Items, null);
         if (res.moveToFirst()){
             do{
                 int days = res.getInt(0);
@@ -105,6 +105,13 @@ public class DBHandler extends SQLiteOpenHelper {
             res.close();
         }
         return foodwasted;
+    }
+
+    public int updateData(int id, int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put("Updated_Quantity", quantity);
+        return db.update(TABLE_Items, args, "Product_Id = " +id , null);
     }
 
     public Integer getNextTwoDayNotificationCount(){

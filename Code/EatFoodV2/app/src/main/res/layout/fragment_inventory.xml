@@ -10,6 +10,15 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"
+        android:paddingTop="130dp"
         android:id="@+id/InvList" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/updateInvButton" />
+
+
 </FrameLayout>

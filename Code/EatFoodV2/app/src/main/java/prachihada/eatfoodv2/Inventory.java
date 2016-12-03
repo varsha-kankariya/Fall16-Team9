@@ -87,7 +87,7 @@ public class Inventory extends Fragment {
         mListDataAdapter = new ListDataAdapter(getContext(),R.layout.inventory_list,itemsList);
 
         listView.setAdapter(mListDataAdapter);
-      //  mListDataAdapter.notifyDataSetChanged();
+        //  mListDataAdapter.notifyDataSetChanged();
     }
 
 

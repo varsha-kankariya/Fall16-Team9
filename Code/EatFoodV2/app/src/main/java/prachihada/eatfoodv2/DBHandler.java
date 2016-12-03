@@ -56,8 +56,8 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         ContentValues contentValues = new ContentValues();
         contentValues.put("Item_name", item.getName());
-        contentValues.put("Original_Quantity", item.getQuantity());
         contentValues.put("Updated_Quantity", item.getQuantity());
+        contentValues.put("Original_Quantity", item.getQuantity());
         contentValues.put("Purchase_Date", sdf.format(date));
         contentValues.put("Expiry_Date", exp_dt);
         contentValues.put("Quantity_Type", item.getWeight_type());

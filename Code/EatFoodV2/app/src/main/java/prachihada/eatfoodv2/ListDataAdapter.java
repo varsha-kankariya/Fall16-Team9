@@ -19,12 +19,6 @@ import java.util.Map;
 public class ListDataAdapter extends ArrayAdapter {
 
     DBHandler db;
-    private HashMap<Integer, Item> mlist;
-
-    public ListDataAdapter(Context context, int resource, HashMap<Integer, Item> list) {
-        super(context, resource);
-        mlist = list;
-    }
 
     public HashMap<Integer, Item> getMlist() {
         return mlist;
@@ -32,6 +26,13 @@ public class ListDataAdapter extends ArrayAdapter {
 
     public void setMlist(HashMap<Integer, Item> mlist) {
         this.mlist = mlist;
+    }
+
+    private HashMap<Integer, Item> mlist;
+
+    public ListDataAdapter(Context context, int resource, HashMap<Integer, Item> list) {
+        super(context, resource);
+        mlist = list;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class ListDataAdapter extends ArrayAdapter {
         final TextView itemId = (TextView) mview.findViewById(R.id.InvId);
         TextView name = (TextView) mview.findViewById(R.id.InvName);
         TextView expDate = (TextView) mview.findViewById(R.id.InvExp);
-        EditText quantity = (EditText) mview.findViewById(R.id.InvQuant);
+        final EditText quantity = (EditText) mview.findViewById(R.id.InvQuant);
         TextView weight = (TextView) mview.findViewById(R.id.Invweight);
         ImageButton delete = (ImageButton) mview.findViewById(R.id.delete);
 
@@ -86,6 +87,15 @@ public class ListDataAdapter extends ArrayAdapter {
                 System.out.println("Deleted at position : " + position);
                 System.out.println("Deleted");
 
+            }
+        });
+
+        quantity.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                String itemQuant = quantity.getText().toString();
+                if (!hasFocus && itemQuant!=null && !itemQuant.equals("")) {
+                    mlist.get(position).setQuantity(Integer.parseInt(itemQuant));
+                }
             }
         });
         return mview;

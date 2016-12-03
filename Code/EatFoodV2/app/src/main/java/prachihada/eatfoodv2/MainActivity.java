@@ -1,6 +1,7 @@
 package prachihada.eatfoodv2;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
+        int color = Color.parseColor("#AE6118"); //The color u want
+        fab.setColorFilter(45646);
         /*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

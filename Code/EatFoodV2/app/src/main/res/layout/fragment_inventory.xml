@@ -14,11 +14,12 @@
         android:id="@+id/InvList" />
 
     <Button
-        android:text="Button"
+        android:text="Update"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="bottom"
-        android:id="@+id/updateInvButton" />
-
-
+        android:id="@+id/updateInvButton"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/white" />
 </FrameLayout>

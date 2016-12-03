@@ -47,10 +47,11 @@
         <Button
             android:text="Scan"
             android:id="@+id/scan_button"
-            android:layout_width="46dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="0.34"
-            style="@style/Widget.AppCompat.Button" />
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimaryDark" />
 
     </TableRow>
 </TableLayout>

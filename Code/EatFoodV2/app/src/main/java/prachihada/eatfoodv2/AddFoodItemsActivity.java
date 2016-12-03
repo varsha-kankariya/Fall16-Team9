@@ -251,8 +251,7 @@ public class AddFoodItemsActivity extends AppCompatActivity {
       for (Map.Entry<String, Item> entry : finalList.entrySet()) {
             Item item = entry.getValue();
 //            System.out.println(entry.getKey()+" : "+item.getWeight_type()+ " : "+item.getQuantity());
-          if(item.getQuantity()>0) {
-
+          if(item.getQuantity()>0 && !item.getName().equals("")) {
               dataHelper.insertData(entry.getKey(),item);
           }
         }
@@ -302,12 +301,7 @@ public class AddFoodItemsActivity extends AppCompatActivity {
                 } else {
                     Log.d(TAG, "No Text captured, intent data is null");
                 }
-            } else {
-
             }
-        }
-        else {
-
         }
     }
 }

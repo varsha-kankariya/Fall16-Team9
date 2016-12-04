@@ -1,7 +1,7 @@
 # Fall16-Team9
 
 
-## EatFood
+## COMSUMit
 
 ###Problem:
 

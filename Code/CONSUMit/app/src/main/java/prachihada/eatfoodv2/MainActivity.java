@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -40,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Main Activity on create called!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar)findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
+//        toolbar = (Toolbar)findViewById(R.id.toolBar);
+//        setSupportActionBar(toolbar);
+        TextView textViewLogo = (TextView)findViewById(R.id.textViewLogo);
+        textViewLogo.setTextColor(0);
 
         tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewPager);

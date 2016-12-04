@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
-    android:fitsSystemWindows="true"
-    android:id="@+id/toolBar"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:background="@color/colorPrimary"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp">
 
-</android.support.v7.widget.Toolbar>
+
+    <TableRow
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/consumitlogo"
+            android:id="@+id/imageView1"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLogo"
+            tools:text="@string/app_name"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
+            android:paddingTop="8dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white" />
+
+
+    </TableRow>
+</TableLayout>

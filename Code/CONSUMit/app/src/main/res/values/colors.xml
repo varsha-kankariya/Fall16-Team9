@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#4ac97d</color>
     <!--<color name="colorPrimaryDark">#3f9e65</color>-->
-    <color name="colorPrimaryDark">#009199</color>
+    <color name="colorPrimaryDark">#16769E</color>
     <color name="colorAccent">#66CCFF</color>
     <color name="borderColor">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="colorFloatButton">#E24355</color>
+    <color name="colorButton">#16769E</color>
 </resources>

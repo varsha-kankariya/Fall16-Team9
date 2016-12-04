@@ -144,8 +144,8 @@ public class    FoodWasted extends Fragment {
 
         //Add color to data set
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GREEN);
-        colors.add(Color.RED);
+        colors.add(Color.rgb(32, 188, 32));
+        colors.add(Color.rgb(216, 69, 19));
 
         pieDataSet.setColors(colors);
 

@@ -15,13 +15,13 @@ import java.util.Date;
  */
 
 public class DBHandler extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "test5.db";
+    public static final String DATABASE_NAME = "test9.db";
     //public static final int DATABASE_VERSION = 1;
     public static final String TABLE_Items = "ItemsT2";
     public static final String itemId = "Product_Id";
 
     //public static final String CREATE_TABLE_OUTLET= "CREATE TABLE "+ TABLE_Items+ "(Product_Id INTEGER PRIMARY KEY AUTOINCREMENT, Item_name TEXT, Quantity INTEGER, Quantity_Type TEXT DEFAULT "+"lb"+",Purchase_Date TIMESTAMP DEFAULT"+"("+"'now'"+")"+", Expiry_Date TIMESTAMP, Expiry_Days Integer, Is_Expired TEXT, Is_Consumed TEXT)";
-    public static final String CREATE_TABLE_OUTLET= "CREATE TABLE IF NOT EXISTS "+ TABLE_Items+ "(Product_Id INTEGER PRIMARY KEY AUTOINCREMENT, Item_name TEXT, Original_Quantity INTEGER, Updated_Quantity INTEGER, Quantity_Type TEXT, Purchase_Date TEXT, Expiry_Date TEXT, Expiry_Days INTEGER, Is_Expired TEXT, Is_Consumed TEXT)";
+    public static final String CREATE_TABLE_OUTLET= "CREATE TABLE IF NOT EXISTS "+ TABLE_Items+ "(Product_Id INTEGER PRIMARY KEY AUTOINCREMENT, Item_name TEXT, Original_Quantity INTEGER, Updated_Quantity INTEGER, Quantity_Type TEXT, Purchase_Date TEXT, Expiry_Date TEXT, Expiry_Days INTEGER, Is_Expired TEXT DEFAULT 'FALSE', Is_Consumed TEXT DEFAULT 'FALSE')";
     public static final String DELETE_TABLE_OUTLET="DROP TABLE IF EXISTS " + TABLE_Items;
 
     public DBHandler(Context context) {
@@ -68,6 +68,39 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_Items, null);
         return res;
+    }
+
+    public Cursor getExpiredData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select Product_Id, Item_Name, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) > julianday(Expiry_Date) order by DAYS_LEFT", null);
+        return res;
+    }
+
+    public Cursor getConsumedData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_Items + " where Is_Consumed = 'TRUE'", null);
+        return res;
+    }
+
+    public Cursor getNotExpired(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Cursor res = db.rawQuery("select * from "+TABLE_Items + " where Is_Expired = 'FALSE' AND Is_Consumed = 'FALSE'", null);
+        Cursor res = db.rawQuery("select Product_Id, Item_Name, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) < julianday(Expiry_Date) order by DAYS_LEFT", null);
+        return res;
+    }
+
+    public void isConsumed(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "UPDATE " + TABLE_Items  +" SET Is_Consumed = CASE WHEN Updated_Quantity = 0 THEN 'TRUE' ELSE 'FALSE' END;";
+        db.execSQL(sql);
+//        System.out.println("is_consumed_set");
+    }
+
+    public void isExpired(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "UPDATE " +TABLE_Items+  " SET Is_Expired = CASE WHEN julianday(Expiry_Date) > (julianday()-1) THEN 'FALSE' ELSE 'TRUE' END;";
+        db.execSQL(sql);
+//        System.out.println("is_expired_set");
     }
 
     public void deleteData(String id){

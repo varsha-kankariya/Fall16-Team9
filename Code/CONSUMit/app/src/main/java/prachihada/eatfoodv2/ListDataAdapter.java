@@ -47,7 +47,7 @@ public class ListDataAdapter extends ArrayAdapter {
 
 
     public void removeElementFromList(int position) {
-        System.out.println("positon : " + position);
+//        System.out.println("positon : " + position);
         mlist.remove(position);
 
     }
@@ -84,8 +84,8 @@ public class ListDataAdapter extends ArrayAdapter {
                 updateListForRemovedElement();
                 notifyDataSetChanged();
                 db.deleteData(itemId.getText().toString());
-                System.out.println("Deleted at position : " + position);
-                System.out.println("Deleted");
+//                System.out.println("Deleted at position : " + position);
+//                System.out.println("Deleted");
 
             }
         });
@@ -93,7 +93,8 @@ public class ListDataAdapter extends ArrayAdapter {
         quantity.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 String itemQuant = quantity.getText().toString();
-                if (!hasFocus && itemQuant!=null && !itemQuant.equals("")) {
+                Item item = mlist.get(position);
+                if (!hasFocus && itemQuant!=null && !itemQuant.equals("") && item!=null) {
                     mlist.get(position).setQuantity(Integer.parseInt(itemQuant));
                 }
             }
@@ -120,6 +121,6 @@ public class ListDataAdapter extends ArrayAdapter {
 
     public void printItemDetails(Item item) {
 
-        System.out.println("Item Id : " + item.getId() + "Name : " + item.getName() + "Quantity : " + item.getQuantity());
+//        System.out.println("Item Id : " + item.getId() + "Name : " + item.getName() + "Quantity : " + item.getQuantity());
     }
 }

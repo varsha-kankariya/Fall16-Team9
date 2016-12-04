@@ -1,60 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:padding="0dp"
-tools:context="prachihada.eatfoodv2.AddFoodItemsActivity">
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:weightSum="1">
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
 
-    <!-- List view for drop down lists-->
-    <ExpandableListView
-        android:id="@+id/lvExp"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
+<TableRow
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/colorFloatButton">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:id="@+id/textViewAddItem"
+        android:text="Add Item"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_weight=".5"
+        android:padding="8dp" />
 
-<!-- Layout for action bar-->
-<LinearLayout
-    android:id="@+id/show_pdf"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-    android:background="@color/primary_material_light"
-    android:orientation="horizontal"
-    android:weightSum="1"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
-
-    <!--Icon/button for fridge -->
-    <ImageButton
-        android:layout_width="56dp"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
         android:src="@android:drawable/ic_menu_save"
         android:onClick="processUserData"
-        android:layout_gravity="bottom|right"/>
+        android:layout_gravity="bottom|right"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:background="@color/colorFloatButton" />
 
-    <!--Icon/button for shopping cart -->
-    <!--<ImageButton-->
-        <!--android:layout_width="192dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@android:drawable/ic_menu_view"-->
-        <!--android:background="@color/colorPrimaryDark"-->
-        <!--android:tint="@android:color/white"-->
-        <!--android:onClick="viewData"/>-->
+</TableRow>
+<TableRow
+    android:id="@+id/tableRow1"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
 
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
 
-</LinearLayout>
-</RelativeLayout>
+</TableRow>
+</TableLayout>

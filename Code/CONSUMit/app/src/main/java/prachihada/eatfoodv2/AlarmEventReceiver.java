@@ -22,14 +22,14 @@ public class AlarmEventReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        System.out.println("On receiving the notifications!!");
+//        System.out.println("On receiving the notifications!!");
 
 
         dbHandler = new DBHandler(context);
 
 
         Integer itemCount = dbHandler.getNextTwoDayNotificationCount();
-        System.out.println("**************************************************Item count wasted : " + itemCount);
+//        System.out.println("**************************************************Item count wasted : " + itemCount);
 
         if (itemCount > 0) {
             Notification notification = getNotification(context, "Consume " + itemCount + " item(s) in next 2 days!");
@@ -40,8 +40,8 @@ public class AlarmEventReceiver extends BroadcastReceiver {
             notificationManager.notify(NOTIFICATION_ID, notification);
 
         } else {
-            System.out.println("");
-            System.out.println("No food expiring in next 2 days to consume!!");
+//            System.out.println("");
+//            System.out.println("No food expiring in next 2 days to consume!!");
         }
 
     }

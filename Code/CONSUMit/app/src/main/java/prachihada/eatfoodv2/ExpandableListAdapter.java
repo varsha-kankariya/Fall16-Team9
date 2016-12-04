@@ -56,7 +56,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
-        System.out.println("In getChildView()");
+//        System.out.println("In getChildView()");
         if(groupPosition !=2) {
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -106,7 +106,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
-                    System.out.println("Nothing Selected for "+childText+ "!");
+//                    System.out.println("Nothing Selected for "+childText+ "!");
                 }
             });
 
@@ -165,7 +165,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                System.out.println("Other Section : Item expiry date changed!!");
+//                System.out.println("Other Section : Item expiry date changed!!");
                 String expDate = date.getText().toString();
                 if(!date.equals("")){
                     finalList.get("Other").setExpDate(expDate);
@@ -193,7 +193,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                System.out.println("Other Section : Item quantity changed!!");
+//                System.out.println("Other Section : Item quantity changed!!");
                 String quantityAsStr = quantity.getText().toString();
                 if(!quantity.equals("")){
                     finalList.get("Other").setQuantity(Integer.parseInt(quantityAsStr));
@@ -220,7 +220,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                System.out.println("Other Section : Item name changed!!");
+//                System.out.println("Other Section : Item name changed!!");
                 finalList.get("Other").setName(itemName.getText().toString());
 
             }

@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -38,18 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Main Activity on create called!!!");
+//        System.out.println("Main Activity on create called!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        toolbar = (Toolbar)findViewById(R.id.toolBar);
-//        setSupportActionBar(toolbar);
-        TextView textViewLogo = (TextView)findViewById(R.id.textViewLogo);
-        textViewLogo.setTextColor(0);
 
         tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new Inventory(), "Food Inventory");
+        viewPagerAdapter.addFragments(new FoodExpired(), "Food Expired");
         viewPagerAdapter.addFragments(new FoodWasted(), "Food Wasted");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -115,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent notificationIntent = new Intent(this, AlarmEventReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM_REQ_ID, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        System.out.println("Cancelled alarm");
+//        System.out.println("Cancelled alarm");
         alarmMgr.cancel(pendingIntent);
     }
 

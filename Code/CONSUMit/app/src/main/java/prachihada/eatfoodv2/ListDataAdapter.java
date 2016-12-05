@@ -76,6 +76,7 @@ public class ListDataAdapter extends ArrayAdapter {
         expDate.setText(dataProvider.getExpDate());
         quantity.setText(Integer.toString(dataProvider.getQuantity()));
         weight.setText(dataProvider.getWeight_type());
+        final int o_quantity = dataProvider.getOriginalquantity();
         printItemDetails(dataProvider);
         delete.setOnClickListener(new View.OnClickListener() {
 

@@ -85,7 +85,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public Cursor getNotExpired(){
         SQLiteDatabase db = this.getWritableDatabase();
         //Cursor res = db.rawQuery("select * from "+TABLE_Items + " where Is_Expired = 'FALSE' AND Is_Consumed = 'FALSE'", null);
-        Cursor res = db.rawQuery("select Product_Id, Item_Name, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) < julianday(Expiry_Date) order by DAYS_LEFT", null);
+        Cursor res = db.rawQuery("select Product_Id, Item_Name, Original_Quantity, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) < julianday(Expiry_Date) order by DAYS_LEFT", null);
         return res;
     }
 

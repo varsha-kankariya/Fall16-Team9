@@ -1,10 +1,12 @@
 package prachihada.eatfoodv2;
 
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,10 +50,25 @@ public class Inventory extends Fragment {
                 for (Map.Entry<Integer, Item> entry : inventoryList.entrySet()) {
                     Item item = entry.getValue();
                     int id = item.getId();
+                    int oquantity = item.getOriginalquantity();
                     int quantity = item.getQuantity();
-                    dateBaseHelper.updateData(id, quantity);
+                    if(quantity > oquantity) {
+                        dateBaseHelper.updateData(id, quantity);
+                        System.out.println(id + "id is updated with quantity" + quantity);
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setMessage("Cannot increase the product quantity!")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //do things
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        break;
+                    }
                     position++;
-                    System.out.println(id + "id is updated with quantity" +quantity);
                 }
                 dateBaseHelper.isConsumed();
                 dateBaseHelper.isExpired();
@@ -74,12 +91,14 @@ public class Inventory extends Fragment {
                 int expDate;
                 String expday;
                 int quantity;
+                int oquantity;
                 String weight;
                 itemId = cursor.getInt(0);
                 item_name = cursor.getString(1);
-                quantity = cursor.getInt(2);
-                weight = cursor.getString(3);
-                expDate = (int) Float.parseFloat(cursor.getString(4));
+                oquantity = cursor.getInt(2);
+                quantity = cursor.getInt(3);
+                weight = cursor.getString(4);
+                expDate = (int) Float.parseFloat(cursor.getString(5));
                 if(expDate == 0){
                     expday = "Expires Today";
                 }
@@ -87,7 +106,7 @@ public class Inventory extends Fragment {
                     expday = "Expires in " + String.valueOf(expDate) + " days";
                 }
                 //if(isConsumed.equals("FALSE") && isExpired.equals("FALSE")) {
-                Item dataProvider = new Item(itemId, item_name, expday, quantity, weight);
+                Item dataProvider = new Item(itemId, item_name, expday, quantity, weight, oquantity);
                 itemsList.put(position, dataProvider);
                 printItemDetails(dataProvider, position);
                 position++;

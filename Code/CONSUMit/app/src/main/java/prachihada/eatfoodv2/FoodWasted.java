@@ -105,6 +105,7 @@ public class    FoodWasted extends Fragment {
                     if(yData[i]==Float.parseFloat(total)){
                         consumedType = xData[i];
                         Log.d(TAG, "onValueSelected: " + consumedType);
+                        total = total.substring(0, (total.indexOf(".") + 3));
                         Toast.makeText(getContext(), total + " Percent \n" + consumedType, Toast.LENGTH_LONG ).show();
                         break;
                     }

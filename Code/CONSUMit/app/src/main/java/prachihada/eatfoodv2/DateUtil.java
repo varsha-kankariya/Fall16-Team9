@@ -12,16 +12,18 @@ import java.util.regex.Matcher;
 
 public class DateUtil {
     //    private static final String[] timeFormats = {"HH:mm:ss","HH:mm"};
-    private static final String[] dateSeparators = {"/","-"," "};
+    private static final String[] dateSeparators = {"/","-"," ",""};
 
     private static String finalDateFormat = "";
     private static final String MDY_FORMAT = "MMM{sep}dd{sep}yy";
     private static final String MDYY_FORMAT = "MMM{sep}dd{sep}yyyy";
     private static final String MMDDYY_FORMAT = "MM{sep}dd{sep}yy";
+    private static final String DDMMMYY_FORMAT = "dd{sep}MMM{sep}yy";
 
     private static final String dmy_template = ".*\\w{3}{sep}\\d{2}{sep}\\d{2}.*";
     private static final String ymd_template = ".*\\w{3}{sep}\\d{2}{sep}\\d{4}.*";
-    private static final String mmdddyy_template = ".*\\d{2}{sep}\\d{2}{sep}\\d{2}.*";
+    private static final String mmddyy_template = ".*\\d{2}{sep}\\d{2}{sep}\\d{2}.*";
+    private static final String ddmmmyy_template = ".*\\d{2}{sep}\\w{3}{sep}\\d{2}.*";
 
     public static Date stringToDate(String input){
         Date date = null;
@@ -64,7 +66,8 @@ public class DateUtil {
         for(String sep : dateSeparators){
             String ymdPattern = patternForSeparator(ymd_template, sep);
             String dmyPattern = patternForSeparator(dmy_template, sep);
-            String mmdddyyPattern = patternForSeparator(mmdddyy_template, sep);
+            String mmddyyPattern = patternForSeparator(mmddyy_template, sep);
+            String ddmmmyyPattern = patternForSeparator(ddmmmyy_template, sep);
             if(date.matches(ymdPattern)){
                 finalDateFormat = ymdPattern;
                 return MDYY_FORMAT;
@@ -73,9 +76,13 @@ public class DateUtil {
                 finalDateFormat = dmyPattern;
                 return MDY_FORMAT;
             }
-            if(date.matches(mmdddyyPattern)){
-                finalDateFormat = mmdddyyPattern;
+            if(date.matches(mmddyyPattern)){
+                finalDateFormat = mmddyyPattern;
                 return MMDDYY_FORMAT;
+            }
+            if(date.matches(ddmmmyyPattern)){
+                finalDateFormat = ddmmmyyPattern;
+                return DDMMMYY_FORMAT;
             }
         }
         return null;
@@ -85,7 +92,7 @@ public class DateUtil {
         return template.replace("{sep}", sep);
     }
 
-    private static Date tryParse(String input, String pattern){
+    public static Date tryParse(String input, String pattern){
         try{
             return new SimpleDateFormat(pattern).parse(input);
         }

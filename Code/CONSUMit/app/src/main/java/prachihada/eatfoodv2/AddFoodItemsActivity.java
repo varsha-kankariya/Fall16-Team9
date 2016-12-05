@@ -193,15 +193,16 @@ public class AddFoodItemsActivity extends AppCompatActivity {
             System.out.println(key + " = " + value);
         }*/
         displayItemList();
-        saveDataToDb();
-        prepareListData();
-        prepareFinalListData();
-        //Invoke method to add notifications
-        //createNotifications();
+        boolean iscorrect = saveDataToDb();
+        if(iscorrect){
+            prepareListData();
+            prepareFinalListData();
+            //Invoke method to add notifications
+            //createNotifications();
 
-        Toast.makeText(getApplicationContext(),"Data Saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Data Saved", Toast.LENGTH_SHORT).show();
 
-        //Code to reset the data
+            //Code to reset the data
         /*
         // preparing list data
         prepareListData();
@@ -215,9 +216,9 @@ public class AddFoodItemsActivity extends AppCompatActivity {
 
         */
 
-        Intent mainIntent = new Intent(this,MainActivity.class);
-        startActivity(mainIntent);
-
+            Intent mainIntent = new Intent(this,MainActivity.class);
+            startActivity(mainIntent);
+        }
     }
 
 
@@ -254,16 +255,24 @@ public class AddFoodItemsActivity extends AppCompatActivity {
 
 
     //Save data to db
-    public void saveDataToDb(){
+    public boolean saveDataToDb(){
 
       for (Map.Entry<String, Item> entry : finalList.entrySet()) {
             Item item = entry.getValue();
 //            System.out.println(entry.getKey()+" : "+item.getWeight_type()+ " : "+item.getQuantity());
           if(item.getQuantity()>0 && !item.getName().equals("")) {
-              dataHelper.insertData(entry.getKey(),item);
+              if(entry.getKey().equals("Other") && DateUtil.tryParse(item.getExpDate(),"yyyy-MM-dd") == null){
+                  EditText editTextDate = (EditText)findViewById(R.id.editText_Date);
+                  editTextDate.setError("Invalid date. Format yyyy-mm-dd");
+                  return false;
+              }
+              else {
+                  dataHelper.insertData(entry.getKey(),item);
+                  return true;
+              }
           }
         }
-
+        return false;
     }
 
 

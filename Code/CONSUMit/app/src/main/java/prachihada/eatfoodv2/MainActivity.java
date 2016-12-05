@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new Inventory(), "Food Inventory");
         viewPagerAdapter.addFragments(new FoodExpired(), "Food Expired");
-        viewPagerAdapter.addFragments(new FoodWasted(), "Food Wasted");
+        viewPagerAdapter.addFragments(new FoodWasted(), "Foodprint");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,9);
         //calendar.set(Calendar.HOUR_OF_DAY,21);
-        //calendar.set(Calendar.MINUTE,35);
+        //calendar.set(Calendar.MINUTE,9);
 
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM_REQ_ID, new Intent(this,AlarmEventReceiver.class), PendingIntent.FLAG_UPDATE_CURRENT);

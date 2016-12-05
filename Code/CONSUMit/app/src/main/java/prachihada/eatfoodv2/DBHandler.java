@@ -72,7 +72,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Cursor getExpiredData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select Product_Id, Item_Name, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) > julianday(Expiry_Date) order by DAYS_LEFT", null);
+        Cursor res = db.rawQuery("select Product_Id, Item_Name, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where ((julianday()-1) > julianday(Expiry_Date)) AND Updated_Quantity>0 order by DAYS_LEFT", null);
         return res;
     }
 
@@ -85,7 +85,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public Cursor getNotExpired(){
         SQLiteDatabase db = this.getWritableDatabase();
         //Cursor res = db.rawQuery("select * from "+TABLE_Items + " where Is_Expired = 'FALSE' AND Is_Consumed = 'FALSE'", null);
-        Cursor res = db.rawQuery("select Product_Id, Item_Name, Original_Quantity, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where (julianday()-1) < julianday(Expiry_Date) order by DAYS_LEFT", null);
+        Cursor res = db.rawQuery("select Product_Id, Item_Name, Original_Quantity, Updated_Quantity, Quantity_Type,(julianday(Expiry_Date) - (julianday()-1) ) AS DAYS_LEFT from  "+TABLE_Items + " where ((julianday()-1) < julianday(Expiry_Date)) AND Updated_Quantity>0 order by DAYS_LEFT", null);
         return res;
     }
 
@@ -186,34 +186,5 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return foodCount;
     }
-
-//    public void updateExipryDays()
-//    {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor res = db.rawQuery("select * from "+TABLE_Items, null);
-//        while(res.moveToNext()){
-//            Integer current_expiry = Integer.valueOf(res.getString(6)) ;
-//            Integer id = Integer.valueOf(res.getString(0)) ;
-//            System.out.println("Id: "+ res.getString(0));
-//            System.out.println("current_expiry: "+ res.getString(6));
-//            System.out.println("purchase_date: " + res.getString(4));
-//            String date_calc = "SELECT julianday() - julianday("+"'"+res.getString(4)+"'"+") FROM "+ TABLE_Items + " where Product_Id ="+ id;
-//            System.out.println("select query: " + date_calc);
-//            Cursor date_diff = db.rawQuery(date_calc, null);
-//            while(date_diff.moveToNext()){
-//                //Integer diff = Integer.valueOf(date_diff.getString(0)) ;
-//                //Integer new_exp = current_expiry - diff;
-//                System.out.println("diff: "+ date_diff.getString(0));
-//                //System.out.println("new_expiry: "+ new_exp);
-//                //String Update_exp = "Update "+ TABLE_Items +" set Expiry_Days = "+new_exp+" where Product_Id = " + id;
-//                //db.execSQL(Update_exp);
-//            }
-//        }
-//
-//
-//    }
-
-
-
 
 }

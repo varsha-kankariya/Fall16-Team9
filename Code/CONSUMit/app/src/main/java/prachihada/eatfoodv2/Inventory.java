@@ -52,9 +52,12 @@ public class Inventory extends Fragment {
                     int id = item.getId();
                     int oquantity = item.getOriginalquantity();
                     int quantity = item.getQuantity();
-                    if(quantity > oquantity) {
+                    if(quantity <= oquantity) {
                         dateBaseHelper.updateData(id, quantity);
                         System.out.println(id + "id is updated with quantity" + quantity);
+                        if(quantity == 0){
+                            mListDataAdapter.updateListForRemovedElement();
+                        }
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         builder.setMessage("Cannot increase the product quantity!")

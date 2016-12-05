@@ -164,7 +164,7 @@ public class AddFoodItemsActivity extends AppCompatActivity {
         vegetables.add("Brocolli");
 
         List<String> other_products = new ArrayList<String>();
-        other_products.add("");
+        other_products.add("Other");
 
 
         listDataChild.put(listDataHeader.get(0), fruits); // Header, Child data

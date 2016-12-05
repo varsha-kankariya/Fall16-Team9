@@ -24,17 +24,6 @@
         android:text="Quantity: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_delete"
-        android:id="@+id/delete"
-        android:layout_alignTop="@+id/InvQuant"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -50,29 +39,26 @@
 
     <TextView
         android:text="TextView"
-        android:id="@+id/Invweight"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/InvQuant"
-        android:layout_alignEnd="@+id/InvQuant"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="0dp"
-        android:layout_width="25dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp" />
-
-    <EditText
-        android:inputType="numberSigned"
-        android:ems="10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/InvQuant"
-        android:layout_width="60dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_alignTop="@+id/Invweight"
-        android:layout_toLeftOf="@+id/delete"
-        android:layout_toStartOf="@+id/delete"
-        android:layout_height="40dp"
-        android:layout_marginBottom="10dp" />
+        android:paddingRight="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/Invweight"
+        android:layout_toStartOf="@+id/Invweight" />
+
+    <TextView
+        android:text="TextView"
+        android:id="@+id/Invweight"
+        android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="68dp"
+        android:layout_marginEnd="68dp"
+        android:gravity="right"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

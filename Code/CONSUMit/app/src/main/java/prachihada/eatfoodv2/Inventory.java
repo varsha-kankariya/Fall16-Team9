@@ -51,7 +51,7 @@ public class Inventory extends Fragment {
                     int quantity = item.getQuantity();
                     dateBaseHelper.updateData(id, quantity);
                     position++;
-//                    System.out.println(id + "id is updated with quantity" +quantity);
+                    System.out.println(id + "id is updated with quantity" +quantity);
                 }
                 dateBaseHelper.isConsumed();
                 dateBaseHelper.isExpired();
@@ -80,7 +80,12 @@ public class Inventory extends Fragment {
                 quantity = cursor.getInt(2);
                 weight = cursor.getString(3);
                 expDate = (int) Float.parseFloat(cursor.getString(4));
-                expday = "Expires in " +String.valueOf(expDate)+ " days";
+                if(expDate == 0){
+                    expday = "Expires Today";
+                }
+                else {
+                    expday = "Expires in " + String.valueOf(expDate) + " days";
+                }
                 //if(isConsumed.equals("FALSE") && isExpired.equals("FALSE")) {
                 Item dataProvider = new Item(itemId, item_name, expday, quantity, weight);
                 itemsList.put(position, dataProvider);
@@ -99,6 +104,6 @@ public class Inventory extends Fragment {
 
     public void printItemDetails(Item item, int position){
 
-//        System.out.println("Postition : " + position  + " Item Id : " + item.getId() + "Name : "+ item.getName() + "Quantity : " + item.getQuantity() );
+        System.out.println("Postition : " + position  + " Item Id : " + item.getId() + "Name : "+ item.getName() + "Quantity : " + item.getQuantity() );
     }
 }

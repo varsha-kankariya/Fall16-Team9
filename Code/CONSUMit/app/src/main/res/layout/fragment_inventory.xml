@@ -1,0 +1,25 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="prachihada.eatfoodv2.Inventory">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="130dp"
+        android:id="@+id/InvList" />
+
+    <Button
+        android:text="Update"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center"
+        android:id="@+id/updateInvButton"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/white" />
+</FrameLayout>

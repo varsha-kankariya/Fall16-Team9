@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="prachihada.eatfoodv2.FoodWasted">
+
+    <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:text="Food Wasted"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="30dp"-->
+    <!--android:textStyle="bold"-->
+    <!--/>-->
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:paddingTop="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|fill_horizontal"
+        android:id="@+id/idPieChart">
+    </com.github.mikephil.charting.charts.PieChart>
+
+</FrameLayout>

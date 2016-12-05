@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:background="@color/colorPrimary"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp">
+
+
+    <TableRow
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default">
+
+        <ImageView
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/consumitwithnamenew"
+            android:id="@+id/imageViewLogo"
+            android:scaleType="fitStart"
+            android:layout_width="350dp" />
+
+    </TableRow>
+</TableLayout>

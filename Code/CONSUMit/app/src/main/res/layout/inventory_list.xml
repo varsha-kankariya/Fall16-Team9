@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/InvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Name: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/InvExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/InvName"
+        android:layout_below="@+id/InvName"
+        android:text="Quantity: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_delete"
+        android:id="@+id/delete"
+        android:layout_alignTop="@+id/InvQuant"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/InvId"
+        android:layout_alignBaseline="@+id/InvName"
+        android:layout_alignBottom="@+id/InvName"
+        android:layout_toRightOf="@+id/InvExp"
+        android:visibility = "gone"
+        android:layout_toEndOf="@+id/InvExp" />
+
+    <TextView
+        android:text="TextView"
+        android:id="@+id/Invweight"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/InvQuant"
+        android:layout_alignEnd="@+id/InvQuant"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_width="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp" />
+
+    <EditText
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/InvQuant"
+        android:layout_width="60dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignTop="@+id/Invweight"
+        android:layout_toLeftOf="@+id/delete"
+        android:layout_toStartOf="@+id/delete"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp" />
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dip"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <EditText
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText_ItemName"
+            android:hint="Product Name"
+            android:layout_weight="0.20" />
+
+        <EditText
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editText2_Qty"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:layout_weight="0.11" />
+
+        <EditText
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/editText_Date"
+            android:hint="yyyy-mm-dd"
+            android:layout_weight="0.37" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView"
+            android:layout_weight="0.5"/>
+
+        <Button
+            android:text="Scan"
+            android:id="@+id/scan_button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:padding="5dp" />
+
+    </TableRow>
+</TableLayout>

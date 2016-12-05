@@ -19,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -29,15 +32,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     // child data in format of header title, child title
     private HashMap<String, List<String>> _listDataChild;
 
-    private HashMap<String,Item> finalList ;
+    private HashMap<String, Item> finalList;
     private static final int RC_OCR_CAPTURE = 9003;
 
+    private ArrayList<String> wght_types = null;
+
+
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData, HashMap<String,Item> finalList) {
+                                 HashMap<String, List<String>> listChildData, HashMap<String, Item> finalList, List wght_types) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
         this.finalList = finalList;
+        this.wght_types = (ArrayList<String>) wght_types;
     }
 
     @Override
@@ -56,14 +63,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
-
-
-          if(groupPosition == 0 || groupPosition == 1) {
-       //     if (convertView == null) {
-                LayoutInflater infalInflater = (LayoutInflater) this._context
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.list_item, null);
-         //   }
+        if (groupPosition == 0 || groupPosition == 1) {
+            //     if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this._context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_item, null);
+            //   }
 
 
             TextView txtListChild = (TextView) convertView
@@ -72,11 +77,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             txtListChild.setText(childText);
 
             final EditText editText = (EditText) convertView.findViewById(R.id.editText);
-            editText.setText("0");
+            editText.setText(Integer.toString(finalList.get(childText).getQuantity()));
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 public void onFocusChange(View v, boolean hasFocus) {
                     String itemQuant = editText.getText().toString();
-                    if (!hasFocus && itemQuant!=null && !itemQuant.equals("")) {
+                    if (!hasFocus && itemQuant != null && !itemQuant.equals("")) {
                         //editText.getText().toString();
                         //String quantity = editText.getText().toString();
                         // System.out.println("Item : " + childText + "Quantity : " +editText.getText().toString() );
@@ -97,6 +102,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             // Apply the adapter to the spinner
             spinner.setAdapter(adapter);
 
+            spinner.setSelection(wght_types.indexOf(finalList.get(childText).getWeight_type()));
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -113,13 +119,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             });
 
 
-
-        }else if(groupPosition ==2){
+        } else if (groupPosition == 2) {
 
             //if (convertView == null) {
-                LayoutInflater infalInflater = (LayoutInflater) this._context
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.list_other_item, null);
+            LayoutInflater infalInflater = (LayoutInflater) this._context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_other_item, null);
             //}
             final View finalConvertedView = convertView;
 
@@ -128,18 +133,16 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             addListenerToQuantity(convertView);
 
             addListenerToDate(convertView);
-            
+
             Button buttonScan = (Button) convertView.findViewById(R.id.scan_button);
-            buttonScan.setOnClickListener(new View.OnClickListener()
-            {
+            buttonScan.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     Intent intent = new Intent(_context, OcrCaptureActivity.class);
                     intent.putExtra(OcrCaptureActivity.AutoFocus, true);
                     intent.putExtra(OcrCaptureActivity.UseFlash, false);
 
-                    ((Activity)_context).startActivityForResult(intent, RC_OCR_CAPTURE);
+                    ((Activity) _context).startActivityForResult(intent, RC_OCR_CAPTURE);
                 }
             });
 
@@ -153,6 +156,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private void addListenerToDate(View convertView) {
 
         final EditText date = (EditText) convertView.findViewById(R.id.editText_Date);
+        date.setText(finalList.get("Other").getExpDate());
         date.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -169,7 +173,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 //                System.out.println("Other Section : Item expiry date changed!!");
                 String expDate = date.getText().toString();
-                if(!date.equals("")){
+                if (!date.equals("")) {
                     finalList.get("Other").setExpDate(expDate);
                 }
 
@@ -181,6 +185,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private void addListenerToQuantity(View convertView) {
         final EditText quantity = (EditText) convertView.findViewById(R.id.editText2_Qty);
+        quantity.setText(Integer.toString(finalList.get("Other").getQuantity()));
         quantity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -197,7 +202,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 //                System.out.println("Other Section : Item quantity changed!!");
                 String quantityAsStr = quantity.getText().toString();
-                if(!quantity.equals("")){
+                if (!quantity.equals("")) {
                     finalList.get("Other").setQuantity(Integer.parseInt(quantityAsStr));
                 }
 
@@ -209,6 +214,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private void addListenerToItemName(View convertView) {
 
         final EditText itemName = (EditText) convertView.findViewById(R.id.editText_ItemName);
+        itemName.setText(finalList.get("Other").getName());
         itemName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

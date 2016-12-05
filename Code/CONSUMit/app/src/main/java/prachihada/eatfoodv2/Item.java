@@ -10,9 +10,6 @@ public class Item {
     private String name;
     private int quantity;
     private String weight_type;
-
-
-
     private String expDate;
 
     public Item(String name, int quantity, String weight_type){

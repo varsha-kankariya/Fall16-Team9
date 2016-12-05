@@ -2,6 +2,7 @@ package prachihada.eatfoodv2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.api.CommonStatusCodes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,8 +64,13 @@ public class AddFoodItemsActivity extends AppCompatActivity {
         prepareListData();
         prepareFinalListData();
 
+        Resources res = getResources();
+        String[] wght_types = res.getStringArray(R.array.wght_types);
+
+
+
         //Prepare the adapter whose methods will be invoked on any action onto the dropdown lists
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild,finalList);
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild,finalList, new ArrayList<String>(Arrays.asList(wght_types)));
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
@@ -172,7 +179,7 @@ public class AddFoodItemsActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(2), other_products);
     }
 
-    //Invoked on clicking fridge button
+    //Invoked on clicking Save button
     //Add data to db
     //Create notifications
     public void processUserData(View view) {
@@ -187,7 +194,8 @@ public class AddFoodItemsActivity extends AppCompatActivity {
         }*/
         displayItemList();
         saveDataToDb();
-
+        prepareListData();
+        prepareFinalListData();
         //Invoke method to add notifications
         //createNotifications();
 

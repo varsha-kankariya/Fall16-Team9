@@ -105,6 +105,12 @@ public class Inventory extends Fragment {
                 if(expDate == 0){
                     expday = "Expires Today";
                 }
+                else if(expDate == 1){
+                    expday = "Expires in 1 day";
+                }
+                else if(expDate == 2){
+                    expday = "Expires in 2 days";
+                }
                 else {
                     expday = "Expires in " + String.valueOf(expDate) + " days";
                 }

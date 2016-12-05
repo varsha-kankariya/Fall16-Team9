@@ -102,7 +102,7 @@ public class ListDataAdapter extends ArrayAdapter {
             }
         });
 
-        if(expDate.getText().toString() == "Expires Today" || expDate.getText().toString() == "Expires in 1 days" || expDate.getText().toString() == "Expires in 2 days"){
+        if(expDate.getText().toString() == "Expires Today" || expDate.getText().toString() == "Expires in 1 day" || expDate.getText().toString() == "Expires in 2 days"){
             expDate.setTextColor(Color.parseColor("#FF0000"));
         }
         return mview;

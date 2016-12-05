@@ -15,9 +15,9 @@
 
     <Button
         android:text="Update"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|center"
         android:id="@+id/updateInvButton"
         android:backgroundTint="@color/colorPrimaryDark"
         android:fontFamily="sans-serif-medium"
